@@ -1,0 +1,13 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div>
+    <img src="~/photo/Success.jpg" style="display:block; margin:auto;"/>
+</div>
+
+<script>
+    window.alert("通知機器人連動成功\n已可透過 Line Notify 接收通知。\n待會會收到一個測試通知。\n3秒後自動跳轉回首頁")
+    setTimeout("javascript:location.href='/Home/Index'", 3000);
+</script>

@@ -1,0 +1,189 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    table,
+    td {
+        border: 1px solid #333;
+    }
+
+    thead,
+    tfoot {
+        background-color: #333;
+        color: #fff;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">LineBot 點餐機器人(測試版)</h1>
+    <br />
+    <div class="text-xl-left">
+        <p>大家好，我是新人 Leo Shen，因為看 Vincent 每天幫大家訂午餐很新辛苦，寫了個測試的 LineBot 點餐系統試試看簡化他的訂餐作業。</p>
+        <p>新手上路都是查網路的資訊做的，可能寫得沒有很好，有測到 Bug 可以跟我說，能力範圍之內我會盡量修改。</p>
+        <p>我的信箱：leoshen@airiti.com</p>
+    </div>
+    <br />
+
+    <div>
+        <h1>使用說明</h1>
+        請用 Line 加入 bot ID：@@814xgjyd
+        也可用 QR Code：<img src="https://qr-official.line.me/sid/L/814xgjyd.png" width="150" />
+    </div>
+
+    <div>
+        <h1>指令說明</h1>
+        <br />
+        <h4>下列指令會有相對應的後台操作及機器人回覆，回覆內容只有你自己會看到。</h4>
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="3">未註冊 (請先註冊才能使用後續操作)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>功能</td>
+                    <td>指令</td>
+                    <td>備註</td>
+                </tr>
+                <tr>
+                    <td>註冊</td>
+                    <td>!register 工號 姓名</td>
+                    <td>範例：  !register 11084 Leo_Shen</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="3">已註冊</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>功能</td>
+                    <td>指令</td>
+                    <td>備註</td>
+                </tr>
+
+                <tr>
+                    <td>查詢使用者資料</td>
+                    <td>!info</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>查詢菜單</td>
+                    <td>!menu</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>訂餐</td>
+                    <td>!order 品項 飯類(1:白飯 2:紫米) 飯量(1:正常 2:減半)<br />點完可下 !list 確認訂單     
+                    或在網站的訂餐清單查看，如有異常請通知管理員。
+                    </td>
+                    <td>範例： !order 2 1 1</td>
+                </tr>
+
+                <tr>
+                    <td>查詢訂餐清單</td>
+                    <td>!list</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>刪除訂餐</td>
+                    <td>!delete</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="3">管理員指令</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>功能</td>
+                    <td>指令</td>
+                    <td>備註</td>
+                </tr>
+
+                <tr>
+                    <td>發送通知</td>
+                    <td>!notify 通知內容</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>開團</td>
+                    <td>!start</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>結單</td>
+                    <td>!end</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>查詢開團狀態</td>
+                    <td>!isStart</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>修改開團狀態</td>
+                    <td>!isStart 參數</td>
+                    <td>參數：treu/false</td>
+                </tr>
+
+                <tr>
+                    <td>停用帳號</td>
+                    <td>!disable 工號</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>啟用帳號</td>
+                    <td>!enable 工號</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>修改權限</td>
+                    <td>!role 工號 role</td>
+                    <td></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <div style="float:left">
+        <br /><br />
+        <h1>連動 Line Notify</h1>
+        <p>請按下列按扭進行 Line Notify 通知連動，有連動才能收到開團通知。</p>
+        <button onclick="location.href='@Url.Action("GetAuthorize", "Authorize")'">按我連動 LineNotify</button>
+        <p>點選後看到如右頁面，點選 "透過一對一聊天接收通知" > 同意並連動。</p>
+    </div>
+    <div>
+        <img src="~/photo/AddNtifyExample.png" style="width:30%"/>
+    </div>
+
+    <div>
+        <h1>訂餐流程簡述</h1>
+        <p>管理員開團 > 對 Notify 發送通知及菜單 > 使用者可開始對 Line Bot !order 訂餐 > 管理員結單 > 對 Notify 發送通知及訂餐清單</p>
+    </div>
+    
+    
+</div>

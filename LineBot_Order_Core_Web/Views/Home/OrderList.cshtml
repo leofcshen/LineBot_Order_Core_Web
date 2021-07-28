@@ -1,0 +1,50 @@
+﻿@model List<LineBot_Order_Core_Web.Models.Order>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<style>
+    table,
+    td {
+        border: 1px solid #333;
+    }
+
+    thead,
+    tfoot {
+        background-color: #333;
+        color: #fff;
+    }
+</style>
+<h1>訂餐清單</h1>
+@if (Model.Count != 0)
+{    
+    <table>
+        <thead>
+            <tr>
+                <th>訂餐人</th>
+                <th>餐點</th>
+                <th>飯類</th>
+                <th>飯量</th>
+                <th>價格</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.name</td>
+                    <td>@item.meal</td>
+                    <td>@item.rice</td>
+                    <td>@item.riceQuantity</td>
+                    <td>@item.riceQuantity</td>
+                    <td>@item.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>目前無人訂餐</p>
+}

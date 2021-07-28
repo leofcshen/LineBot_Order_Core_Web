@@ -1,0 +1,20 @@
+{
+  "User": [
+    {
+      "UserID": "Test",
+      "EmployeeID": "11084Test",
+      "Department": "",
+      "UserName": "Test",
+      "Role": "user",
+      "Enable": "1"
+    },
+    {
+      "UserID": "",
+      "EmployeeID": "",
+      "Department": "",
+      "UserName": "",
+      "Role": "",
+      "Enable": ""
+    }
+  ]
+}
