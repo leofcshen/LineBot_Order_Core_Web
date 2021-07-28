@@ -79,7 +79,7 @@ namespace LineBot_Order_Core_Web.Controllers
                     #region 用戶加入歡迎訊息
                     case "follow": // 用戶加入發送訊息                        
                         if (isRegistered) // 判斷有沒有註冊，因為有可能是舊用戶封鎖後再解除 type 也會是 follow
-                            message = $"Hi {q[0].UserName}({q[0].EmployeeID})，歡迎使用訂餐機器人(測試版)，您已註冊過帳號。\n輸入 \"!cmd\" 以查看指令。";
+                            message = $"Hi {q[0].UserName}({q[0].EmployeeID})，歡迎使用訂餐機器人(測試版)，您已註冊過帳號。";
                         else
                             message = "Hi，歡迎使用訂餐機器人(測試版)，您尚未註冊帳號，請輸入 \"!register 工號 姓名\" 進行註冊，姓名如有英文同名請加姓氏以利辨識(例如 \"Leo_Shen\"，注意中間不可有空格。)";                        
                         break;
